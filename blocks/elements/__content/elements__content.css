@@ -5,3 +5,9 @@
   max-width: 246px;
   margin: 25px 15px 31px 21px;
 }
+
+@media (max-width: 1024px) {
+  .elements__content {
+    max-width: 288px;
+  }
+}

@@ -3,3 +3,15 @@
   border-radius: 10px;
   background-color: #fff;
 }
+
+@media (max-width: 1024px) {
+  .elements__element {
+    max-width: 330px;
+  }
+}
+
+@media (max-width: 490px) {
+  .elements__element {
+    max-width: 282px;
+  }
+}

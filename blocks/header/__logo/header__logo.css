@@ -2,3 +2,29 @@
   max-width: 880px;
   margin: 45px auto 0;
 }
+
+@media (max-width: 1024px) {
+  .header__logo {
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__logo {
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 490px) {
+  .header__logo {
+    max-width: 282px;
+    margin: 28px 0 0 27px;
+  }
+}
+
+@media (max-width: 320px) {
+  .header__logo {
+    width: 104px;
+    height: 24px;
+  }
+}

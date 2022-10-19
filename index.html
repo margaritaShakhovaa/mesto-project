@@ -17,14 +17,31 @@
 
   <main class="content">
 
+    <!-- Секция popup -->
+    <!-- popup_opened -->
+    <section class="popup">
+      <div class="popup__container">
+        <img src="./images/form__close.png" alt="Закрыть форму" class="popup__form-close">
+        <form class="popup__form-container">
+          <h2 class="popup__heading">Редактировать профиль</h2>
+          <input type="text" class="popup__input popup__input_name" placeholder="Жак-Ив Кусто">
+          <input type="text" class="popup__input popup__input_description" placeholder="Исследователь океана">
+          <button type="submit" class="popup__submit">Сохранить</button>
+        </form>
+      </div>
+    </section>
+
     <!-- Секция profile -->
     <section class="profile">
       <img src="./images/profile__avatar.jpg" alt="Аватар профиля" class="profile__avatar">
       <div class="profile__info">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <div class="profile__title-container">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button href="#" class="profile__edit-button"></button>
+        </div>
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
-      <button href="#" class="profile__edit-button"></button>
+
       <button class="profile__add-button"></button>
     </section>
 

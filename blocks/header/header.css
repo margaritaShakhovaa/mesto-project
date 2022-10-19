@@ -3,3 +3,21 @@
   margin: auto;
   display: flex;
 }
+
+@media (max-width: 1024px) {
+  .header {
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 490px) {
+  .header {
+    max-width: 320px;
+  }
+}

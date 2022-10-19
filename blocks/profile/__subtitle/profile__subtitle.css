@@ -6,3 +6,17 @@
   max-width: 336px;
   margin: 7px 0 0 30px;
 }
+
+@media (max-width: 768px) {
+  .profile__subtitle {
+    max-width: 250px;
+    margin: 12px auto 0;
+  }
+}
+
+@media (max-width: 320px) {
+  .profile__subtitle {
+    max-width: 158px;
+    font-size: 14px;
+  }
+}
