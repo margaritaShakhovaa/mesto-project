@@ -1,8 +1,8 @@
 .popup__container {
-  margin: auto;
-  width: 510px;
+  width: 430px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 @media (max-width: 570px) {

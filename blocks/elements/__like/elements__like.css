@@ -2,7 +2,7 @@
   margin: 0;
   background-image: url(../../../images/like-disabled.svg);
   background-repeat: no-repeat;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0);
   border: 0px;
   margin: 0;
   background-position: center;

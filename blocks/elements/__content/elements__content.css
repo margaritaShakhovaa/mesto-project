@@ -3,11 +3,17 @@
   justify-content: space-between;
   align-items: center;
   max-width: 246px;
-  margin: 25px 15px 31px 21px;
+  margin: 23px 20px 25px 21px;
 }
 
 @media (max-width: 1024px) {
   .elements__content {
-    max-width: 288px;
+    max-width: 282px;
+  }
+}
+
+@media (max-width: 320px) {
+  .elements__content {
+    margin: 21px 20px 25px 21px;
   }
 }

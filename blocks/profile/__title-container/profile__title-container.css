@@ -1,5 +1,17 @@
 .profile__title-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(189px, 324px) 24px;
+}
+
+@media (max-width: 1024px) {
+  .profile__title-container {
+    grid-template-columns: 259px 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile__title-container {
+    grid-template-columns: 199px 18px;
+    margin: 19px 0 0 15px;
+  }
 }

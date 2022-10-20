@@ -2,11 +2,11 @@
   background-image: url(../../../images/edit-button.svg);
   min-width: 24px;
   height: 24px;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   box-sizing: border-box;
-  margin: 77px 0 0 18px;
-  background-color: #000;
-  background-position: top 4px right 5px;
+  margin: 37px 0 0 18px;
+  background-color: rgba(0, 0, 0, 0);
+  background-position: top 6px right 6px;
   background-repeat: no-repeat;
   cursor: pointer;
 }
@@ -17,15 +17,10 @@
 
 @media (max-width: 768px) {
   .profile__edit-button {
-    margin: 28px 0 0 10px;
-  }
-}
-
-@media (max-width: 320px) {
-  .profile__edit-button {
+    margin: 15px 0 0 6px;
     min-width: 18px;
     height: 18px;
-    border: 1px solid #fff;
-    background-position: top 3px right 3px;
+    background-position: top 4px right 4px;
+    background-size: 8px 8px;
   }
 }

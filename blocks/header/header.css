@@ -1,23 +1,23 @@
 .header {
-  max-width: 880px;
-  margin: auto;
-  display: flex;
+  width: 880px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(84, 84, 84, .5);;
 }
 
 @media (max-width: 1024px) {
   .header {
-    max-width: 680px;
+    width: 680px;
   }
 }
 
 @media (max-width: 768px) {
   .header {
-    max-width: 460px;
+    width: 460px;
   }
 }
 
 @media (max-width: 490px) {
   .header {
-    max-width: 320px;
+    width: 320px;
   }
 }
