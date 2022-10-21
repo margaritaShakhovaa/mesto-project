@@ -20,6 +20,6 @@
   .profile__title {
     font-size: 27px;
     max-width: 189px;
-    margin: auto;
+    margin: 0 auto;
   }
 }

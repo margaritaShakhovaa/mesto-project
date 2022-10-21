@@ -17,10 +17,10 @@
 
 @media (max-width: 570px) {
   .popup__form-close {
-    background-image: url(../../../images/close-icon2.svg);
     width: 20px;
     height: 20px;
+    background-size: 20px 20px;
     right: 0;
-    top: 89px;
+    top: -35px;
   }
 }

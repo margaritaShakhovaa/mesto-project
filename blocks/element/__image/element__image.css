@@ -1,4 +1,4 @@
-.elements__image {
+.element__image {
   width: 282px;
   height: 282px;
   border-radius: 10px 10px 0 0;
@@ -6,14 +6,14 @@
 }
 
 @media (max-width: 1024px) {
-  .elements__image {
+  .element__image {
     width: 330px;
     height: 330px;
   }
 }
 
 @media (max-width: 490px) {
-  .elements__image {
+  .element__image {
     width: 282px;
     height: 282px;
   }

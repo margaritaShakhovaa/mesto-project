@@ -1,4 +1,4 @@
-.elements__content {
+.element__content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,13 +7,7 @@
 }
 
 @media (max-width: 1024px) {
-  .elements__content {
+  .element__content {
     max-width: 282px;
-  }
-}
-
-@media (max-width: 320px) {
-  .elements__content {
-    margin: 21px 20px 25px 21px;
   }
 }
