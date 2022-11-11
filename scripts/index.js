@@ -1,19 +1,28 @@
-let popupEdit = document.querySelector('.popup__edit-profile');
-let profileEditButton = document.querySelector('.profile__edit-button');
-let closeButton = document.querySelector('.popup__form-close');
+// в переменные кладем нужный DOM-элемент
+const popupEdit = document.querySelector('.popup__edit-profile');
+const profileEditButton = document.querySelector('.profile__edit-button');
+const closeButton = document.querySelector('.popup__form-close');
 
-function addPopup() {
+// создаем функцию добавления класса для открытия модального окна
+function openPopup() {
   popupEdit.classList.add('popup_opened');
 }
 
-function removePopup() {
+// слушатель событий для кнопки редактирования профиля
+profileEditButton.addEventListener(
+  'click',
+  function () {
+    openPopup(popupEdit);
+  });
+
+// создаем функцию добавления класса для закрытия модального окна
+function closePopup() {
   popupEdit.classList.remove('popup_opened');
 }
 
-profileEditButton.addEventListener('click', function () {
-  addPopup(popupEdit);
-});
-
-closeButton.addEventListener('click', function () {
-  removePopup(popupEdit);
-});
+// слушатель событий для кнопки закрытия модального окна
+closeButton.addEventListener(
+  'click',
+  function () {
+    closePopup(popupEdit);
+  });
