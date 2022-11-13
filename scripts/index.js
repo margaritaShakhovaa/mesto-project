@@ -9,25 +9,47 @@ const likeButton = document.querySelector('.element__like');
 
 
 // Открытие модального окна
-
-// const editForm = document.querySelector('.popup__form-container');
-// const nameInput = editForm.querySelector('.popup__input_type_name');
-// const descriptionInput = editForm.querySelector('');
-
+// функция
 function openEditPopup() {
   popupEdit.classList.add('popup_opened');
 }
 
-// слушатель событий для кнопки редактирования профиля
+// слушатель событий для кнопки открытия редактирования профиля
 profileEditButton.addEventListener('click',openEditPopup);
 
+//функция
+function openAddCardPopup() {
+  popupAddCard.classList.add('popup_opened');
+}
 
-// слушатель событий для кнопки добавления карточки
-addCardButton.addEventListener(
-  'click',
-  function () {
-    popupAddCard.classList.add('popup_opened');
-  });
+// слушатель событий для кнопки открытия добавления карточки
+addCardButton.addEventListener('click', openAddCardPopup);
+
+
+// Редактирование и сохранение имени и информации о себе
+// Находим форму в DOM
+const formElement = document.querySelector('.popup__form-container');
+
+// функция закрытия формы после сохранения
+function closeForm() {
+  popup.classList.remove('popup_opened');
+}
+
+// Обработчик «отправки» формы, хотя пока она никуда отправляться не будет
+function formSubmitHandler (evt) {
+  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  // Элементы, куда будет вставлено новое значение
+  let nameInput = document.querySelector('.profile__title');
+  let descriptionInput = document.querySelector('.profile__subtitle');
+  // Получение значений полей и запись новых значений
+  nameInput.textContent = formElement.querySelector('[name="profileName"]').value;
+  descriptionInput.textContent = formElement.querySelector('[name="profileDescription"]').value;
+  closeForm();
+}
+
+// Прикрепляем обработчик к форме: он будет следить за событием “submit” - «отправка»*
+formElement.addEventListener('submit', formSubmitHandler);
+
 
 // Закрытие модального окна
 // функция для слушателя событий для кнопки закрытия модального окна
@@ -40,6 +62,7 @@ function closeAllPopups() {
 }
 closeButton.addEventListener('click', closeAllPopups);
 
+
 //Лайк карточки
 // слушатель событий для кнопки лайка
 likeButton.addEventListener(
@@ -48,7 +71,7 @@ likeButton.addEventListener(
     evt.target.classList.toggle('element__like_active');
   });
 
-// массив с карточками
+// Шесть карточек «из коробки»
 const initialCards = [
   {
     name: 'Архыз',
