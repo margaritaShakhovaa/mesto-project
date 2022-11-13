@@ -2,6 +2,7 @@
 const popupEdit = document.querySelector('.popup__edit-profile');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const closeButton = document.querySelector('.popup__form-close');
+const likeButton = document.querySelector('.element__like');
 
 // создаем функцию добавления класса для открытия модального окна
 function openPopup() {
@@ -26,3 +27,14 @@ closeButton.addEventListener(
   function () {
     closePopup(popupEdit);
   });
+
+function likeCard() {
+  likeButton.classList.toggle('element__like_active');
+}
+
+likeButton.addEventListener(
+  'click',
+  function() {
+    likeCard();
+  }
+)
