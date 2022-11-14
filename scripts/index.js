@@ -5,7 +5,7 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 const popupAddCard = document.querySelector('.popup__add_card');
 const addCardButton = document.querySelector('.profile__add-button');
 const closeButton = document.querySelector('.popup__form-close');
-const likeButton = document.querySelector('.element__like');
+
 
 
 // Открытие модального окна
@@ -63,15 +63,10 @@ function closeAllPopups() {
 closeButton.addEventListener('click', closeAllPopups);
 
 
-//Лайк карточки
-// слушатель событий для кнопки лайка
-likeButton.addEventListener(
-  'click',
-  function(evt) {
-    evt.target.classList.toggle('element__like_active');
-  });
-
 // Шесть карточек «из коробки»
+const elements = document.querySelector('.elements');
+const elementTemplate = document.querySelector('#element').content;
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -98,3 +93,19 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+initialCards.forEach(function(item) {
+  const elementItem = elementTemplate.cloneNode(true);
+  elementItem.querySelector('.element__image').src = item.link;
+  elementItem.querySelector('.element__image').alt = item.name;
+  elementItem.querySelector('.element__title').textContent = item.name;
+  elements.append(elementItem);
+})
+
+//Лайк карточки
+const likeButton = document.querySelector('.element__like');
+likeButton.addEventListener(
+  'click',
+  function(evt) {
+    evt.target.classList.toggle('element__like_active');
+  });
