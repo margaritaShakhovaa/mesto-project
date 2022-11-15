@@ -3,10 +3,11 @@
   background-image: url(../../../images/like-disabled.svg);
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0);
-  border: 0;
+  border: none;
   background-position: center;
   width: 22px;
   height: 19px;
+  transition: .5s;
 }
 
 .element__like:hover {

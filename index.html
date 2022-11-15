@@ -17,10 +17,10 @@
   <main class="content">
 
     <!-- Секция popup для редактирования профиля -->
-    <section class="popup popup__edit-profile">
+    <section class="popup popup_edit-profile">
       <div class="popup__container">
-        <button type="button" aria-label="Закрыть" class="popup__form-close"></button>
-        <form name="profileEdit" class="popup__form-container">
+        <button type="button" aria-label="Закрыть" class="popup__form-close popup__form-close_edit"></button>
+        <form name="profileEdit" class="popup__form-container popup__form-container_edit">
           <h2 class="popup__heading">Редактировать профиль</h2>
           <input name="profileName" type="text" class="popup__input popup__input_type_name" value="Жак-Ив Кусто" placeholder="Имя" required>
           <input name="profileDescription" type="text" class="popup__input popup__input_type_description"
@@ -31,10 +31,10 @@
     </section>
 
     <!-- Секция popup для добавления карточек -->
-    <section class="popup popup__add_card">
+    <section class="popup popup_add-card">
       <div class="popup__container">
-        <button type="button" aria-label="Закрыть" class="popup__form-close"></button>
-        <form name="cardAdd" class="popup__form-container">
+        <button type="button" aria-label="Закрыть" class="popup__form-close popup__form-close_add"></button>
+        <form name="cardAdd" class="popup__form-container popup__form-container_add">
           <h2 class="popup__heading">Новое место</h2>
           <input name="cardName" type="text" class="popup__input popup__input_type_card-name" placeholder="Название">
           <input name="cardUrl" type="text" class="popup__input popup__input_type_card-url"
@@ -42,6 +42,16 @@
           <button type="submit" class="popup__submit">Создать</button>
         </form>
       </div>
+    </section>
+
+    <!-- Секция popup для element -->
+    <section class="element-popup">
+      <div class="element-popup__container">
+        <button type="button" aria-label="Закрыть" class="element-popup__close"></button>
+        <img src="https://images.unsplash.com/photo-1668455520578-0847836e48ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80" alt="" class="element-popup__image">
+        <h2 class="element-popup__heading">Тибет</h2>
+      </div>
+
     </section>
 
     <!-- Секция profile -->
@@ -59,23 +69,22 @@
     <section class="elements">
     </section>
 
-    <template id="element">
+    <!-- Template element -->
+    <template id="element-template">
       <article class="element">
         <img src="" alt="" class="element__image">
+        <button type="button" aria-label="Удалить" class="element__delete"></button>
         <div class="element__content">
           <h2 class="element__title"></h2>
-          <button type="button" aria-label="Лайкнуть" class="element__like"></button>
+          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
         </div>
       </article>
     </template>
-
   </main>
 
   <footer class="footer">
     <p class="footer__copyright">© 2022 Mesto Russia</p>
   </footer>
-
-
 
   <script src="/scripts/index.js"></script>
 </body>
