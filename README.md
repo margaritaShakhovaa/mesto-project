@@ -22,6 +22,7 @@
 2. Grid Layout
 3. Методология БЭМ
 4. Медиазапросы
+5. JS-скрипты
 
 **Ссылка на проект**
 * [Ссылка на проект GitPages](https://margaritashakhovaa.github.io/mesto-project/index.html)
