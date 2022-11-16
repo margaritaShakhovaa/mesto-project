@@ -12,6 +12,8 @@ const formEditElement = document.querySelector('.popup__form-container_edit');
 const formAddElement = document.querySelector('.popup__form-container_add');
 const profileName = formEditElement.querySelector('[name="profileName"]');
 const profileDescription = formEditElement.querySelector('[name="profileDescription"]');
+profileName.value = document.querySelector('.profile__title').textContent;
+profileDescription.value = document.querySelector('.profile__subtitle').textContent;
 
 // Переменные для работы с карточками
 const elementsContainer = document.querySelector('.elements');
@@ -81,7 +83,6 @@ function openElementPopup(name, link) {
   imagePopupElement.src = link;
   imagePopupElement.setAttribute('alt', name);
 }
-
 
 // ПОПАП РЕДАКТИРОВАНИЯ И СОХРАНЕНИЯ ИНФОРМАЦИИ О СЕБЕ
 // 1. Находим форму в DOM
