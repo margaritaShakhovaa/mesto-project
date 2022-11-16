@@ -25,4 +25,4 @@
 5. JS-скрипты
 
 **Ссылка на проект**
-* [Ссылка на проект GitPages](https://margaritashakhovaa.github.io/mesto-project/index.html)
+* [Ссылка на проект GitPages](https://margaritashakhovaa.github.io/mesto-project/)
