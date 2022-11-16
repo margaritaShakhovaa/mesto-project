@@ -16,7 +16,6 @@ const profileDescription = formEditElement.querySelector('[name="profileDescript
 // Переменные для работы с карточками
 const elementsContainer = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#element-template').content;
-const imageElement = elementTemplate.querySelector('.element__image');
 
 // Переменные для открытия/закрытия попап картинки
 const elementPopup = document.querySelector('.element-popup');
@@ -38,6 +37,7 @@ function closePopup(popup) {
 // СОЗДАНИЕ НОВОЙ КАРТОЧКИ
 function addCard(nameValue, linkValue) {
   const elementItem = elementTemplate.querySelector('.element').cloneNode(true);
+  const imageElement = elementItem.querySelector('.element__image');
   imageElement.src = linkValue;
   imageElement.alt = nameValue;
   elementItem.querySelector('.element__title').textContent = nameValue;
@@ -67,6 +67,11 @@ function addCard(nameValue, linkValue) {
 function renderCard(card) {
   elementsContainer.prepend(card);
 }
+
+// ДОБАВЛЕНИЕ ПЕРВОНАЧАЛЬНОГО МАССИВА КАРТОЧЕК ПРИ ЗАГРУЗКЕ
+initialCards.forEach(function(item) {
+  elementsContainer.append(addCard(item.name, item.link));
+});
 
 // ПОПАП КАРТИНКИ
 // Функция открытия попап с картинкой
@@ -107,11 +112,6 @@ function handleSubmitAddCard (evt) {
   closePopup(popupAddCardElement);
 }
 // 3. Прикрепляем обработчик к форме: он будет следить за событием “submit” - «отправка»
-
-// ДОБАВЛЕНИЕ ПЕРВОНАЧАЛЬНОГО МАССИВА КАРТОЧЕК ПРИ ЗАГРУЗКЕ
-initialCards.forEach(function(item) {
-  elementsContainer.append(addCard(item.name, item.link));
-});
 
 
 // СЛУШАТЕЛИ
