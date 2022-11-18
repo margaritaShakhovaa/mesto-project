@@ -114,8 +114,8 @@ function handleSubmitAddCard (evt) {
 // СЛУШАТЕЛИ
 // ++ Открытие попап профиля
 buttonEditElement.addEventListener('click', function () {
-  profileName.value = document.querySelector('.profile__title').textContent;
-  profileDescription.value = document.querySelector('.profile__subtitle').textContent;
+  profileName.value =  nameInputElement.textContent;
+  profileDescription.value = descriptionInputElement.textContent;
   openPopup(popupEditElement);
 });
 
