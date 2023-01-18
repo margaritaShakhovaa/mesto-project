@@ -8,6 +8,7 @@ export function openPopup(popup) {
 // Функция закрытия попап форм
 export function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('click', closePopup);
 }
 
 // Функция открытия попап с картинкой

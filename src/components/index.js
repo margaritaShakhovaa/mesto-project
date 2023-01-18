@@ -90,12 +90,12 @@ popupList.forEach(item => (
 
 // Включение валидации форм
 enableValidation({
-  formElement: '.form',
-  inputElement: '.popup__input',
-  buttonElement: '.popup__submit',
-  inactiveButtonElement: 'popup__submit_inactive',
-  inputErrorElement: 'popup__input_type_error',
-  errorElement: 'popup__input-error_active'
+  formSelector: '.form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
 });
 
 

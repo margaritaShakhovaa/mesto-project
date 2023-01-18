@@ -9,6 +9,7 @@
   font-size: 14px;
   line-height: 1.2;
   font-weight: 400;
+  position: relative;
 }
 
 .popup__input:last-of-type {

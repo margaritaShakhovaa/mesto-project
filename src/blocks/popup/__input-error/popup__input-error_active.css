@@ -3,4 +3,8 @@
   font-size: 12px;
   line-height: 15px;
   color: #FF0000;
+  margin: 0;
+  position: absolute;
+  left: 36px;
+  max-width: 358px;
 }
