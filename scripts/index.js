@@ -5,6 +5,7 @@ const buttonEditElement = document.querySelector('.profile__edit-button');
 const popupAddCardElement = document.querySelector('.popup_add-card');
 const buttonAddCardElement = document.querySelector('.profile__add-button');
 const buttonCloseList = document.querySelectorAll('.popup__form-close');
+const popupList = document.querySelectorAll('.popup');
 
 // Переменные для редактирования/сохранение полей в формах
 const formEditElement = document.querySelector('.popup__form-container_edit');
@@ -23,7 +24,6 @@ const linkInput = document.querySelector('[name="cardUrl"]');
 // Переменные для открытия/закрытия попап картинки
 const elementPopup = document.querySelector('.element-popup');
 const imagePopupElement = elementPopup.querySelector('.element-popup__image');
-
 
 // ФУНКЦИИ
 // Функция открытия попап форм
@@ -119,11 +119,29 @@ buttonEditElement.addEventListener('click', function () {
   openPopup(popupEditElement);
 });
 
-// ++ Закрытие попап
+// ++ Закрытие попап по кнопке закрытия
 buttonCloseList.forEach(btn => {
   const popup = btn.closest('.popup');
   btn.addEventListener('click', () => closePopup(popup));
 })
+
+// ++ Закрытие попап по клику за пределами попап
+popupList.forEach(item => (
+  document.addEventListener('click', (e) => {
+    if (e.target === item) {
+      closePopup(item);
+    }
+  })
+));
+
+// ++ Закрытие попап по ESC
+popupList.forEach(item => (
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closePopup(item);
+    }
+  })
+));
 
 // ++ Открытие попап добавления
 buttonAddCardElement.addEventListener('click', function () {
@@ -135,3 +153,9 @@ formEditElement.addEventListener('submit', handleSubmitEditProfile);
 
 // ++ Добавление новой карточки через форму
 formAddElement.addEventListener('submit', handleSubmitAddCard);
+
+popupEditElement.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closePopup(popupEditElement);
+    }
+  })
