@@ -3,3 +3,8 @@
   background-color: #fff;
   border: 1px solid #C4C4C4;;
 }
+
+.popup__submit_inactive:hover {
+  cursor: default;
+  opacity: 1;
+}

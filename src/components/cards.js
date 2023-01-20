@@ -1,5 +1,6 @@
 import { elementTemplate, elementsContainer } from "./consts.js";
 import { openElementPopup } from "./modal.js";
+import {settings} from "./utils";
 
 const initialCards = [
   {
@@ -58,11 +59,10 @@ export function addCard(nameValue, linkValue) {
       evt.target.classList.toggle('element__like_active');
     });
 
-  elementItem.querySelector('.element__image').addEventListener(
+  imageElement.addEventListener(
     'click',
     function () {
       openElementPopup(nameValue, linkValue);
     });
-
   return elementItem;
 }

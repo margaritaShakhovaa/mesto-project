@@ -12,12 +12,12 @@ import {
   popupAddCardElement,
   formAddElement,
   buttonEditElement,
-  buttonCloseList,
   buttonAddCardElement, popupList
 } from "./consts.js";
 import { closePopup, openPopup } from "./modal.js";
 import { addCard, renderCard } from "./cards.js";
-import { enableValidation } from "./validate.js";
+import {enableValidation, toggleButtonState} from "./validate.js";
+import {settings} from "./utils.js";
 
 
 // ПОПАП РЕДАКТИРОВАНИЯ И СОХРАНЕНИЯ ИНФОРМАЦИИ О СЕБЕ
@@ -48,6 +48,7 @@ export function handleSubmitAddCard (evt) {
 }
 // 3. Прикрепляем обработчик к форме: он будет следить за событием “submit” - «отправка»
 // Добавление новой карточки через форму
+
 formAddElement.addEventListener('submit', handleSubmitAddCard);
 
 
@@ -64,36 +65,5 @@ buttonAddCardElement.addEventListener('click', function () {
   openPopup(popupAddCardElement);
 });
 
-// Закрытие попап по кнопке закрытия
-buttonCloseList.forEach(btn => {
-  const popup = btn.closest('.popup');
-  btn.addEventListener('click', () => closePopup(popup));
-})
-
-// Закрытие попап по клику за пределами попап
-popupList.forEach(item => (
-  document.addEventListener('click', (e) => {
-    if (e.target === item) {
-      closePopup(item);
-    }
-  })
-));
-
-// Закрытие попап по ESC
-popupList.forEach(item => (
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closePopup(item);
-    }
-  })
-));
-
 // Включение валидации форм
-enableValidation({
-  formSelector: '.form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_active'
-});
+enableValidation(settings);

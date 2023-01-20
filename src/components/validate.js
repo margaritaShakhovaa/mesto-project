@@ -1,16 +1,18 @@
+import { settings } from "./utils.js";
+
 // Функция, которая добавляет класс с ошибкой
 const showError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('popup__input_type_error');
+  inputElement.classList.add(settings.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__error_active');
+  errorElement.classList.add(settings.errorClass);
 };
 
 // Функция, которая удаляет класс с ошибкой
 const hideError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('popup__input_type_error');
-  errorElement.classList.remove('popup__error_active');
+  inputElement.classList.remove(settings.inputErrorClass);
+  errorElement.classList.remove(settings.errorClass);
   errorElement.textContent = '';
 };
 
@@ -29,25 +31,28 @@ const checkInputValidity = (formElement, inputElement) => {
   }
 };
 
+// Функция, которая принимает массив инпутов
 const hasInvalidInput = (inputList) => {
   return inputList.some ((inputElement) => {
     return !inputElement.validity.valid;
   });
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
+// Функция, которая переключает состояние кнопки
+export const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.disabled = true;
-    buttonElement.classList.add('popup__submit_inactive');
+    buttonElement.classList.add(settings.inactiveButtonClass);
   } else {
     buttonElement.disabled = false;
-    buttonElement.classList.remove('popup__submit_inactive');
+    buttonElement.classList.remove(settings.inactiveButtonClass);
   }
 };
 
+// Функция, которая добавляет ошибки всем полям
 const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-  const buttonElement = formElement.querySelector('.popup__submit');
+  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+  const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
   toggleButtonState(inputList, buttonElement);
 
@@ -59,12 +64,9 @@ const setEventListeners = (formElement) => {
   });
 };
 
-export const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.form'));
+export const enableValidation = (settings) => {
+  const formList = Array.from(document.querySelectorAll(settings.formSelector));
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
     setEventListeners(formElement);
   });
 };
