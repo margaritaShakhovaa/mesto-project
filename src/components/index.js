@@ -12,11 +12,14 @@ import {
   popupAddCardElement,
   formAddElement,
   buttonEditElement,
-  buttonAddCardElement, popupList
+  buttonAddCardElement
 } from "./consts.js";
 import { closePopup, openPopup } from "./modal.js";
 import { addCard, renderCard } from "./cards.js";
-import {enableValidation, toggleButtonState} from "./validate.js";
+import {
+  enableValidation,
+  setEventListeners,
+} from "./validate.js";
 import {settings} from "./utils.js";
 
 
@@ -42,13 +45,10 @@ export function handleSubmitAddCard (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Элементы, куда будет вставлено новое значение
   renderCard(addCard(nameCardInput.value, linkInput.value));
-  nameCardInput.value = '';
-  linkInput.value = '';
   closePopup(popupAddCardElement);
 }
 // 3. Прикрепляем обработчик к форме: он будет следить за событием “submit” - «отправка»
 // Добавление новой карточки через форму
-
 formAddElement.addEventListener('submit', handleSubmitAddCard);
 
 
@@ -63,6 +63,8 @@ buttonEditElement.addEventListener('click', function () {
 // Открытие попап добавления карточки
 buttonAddCardElement.addEventListener('click', function () {
   openPopup(popupAddCardElement);
+  formAddElement.reset();
+  setEventListeners(formAddElement);
 });
 
 // Включение валидации форм

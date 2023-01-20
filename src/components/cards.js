@@ -1,27 +1,26 @@
 import { elementTemplate, elementsContainer } from "./consts.js";
 import { openElementPopup } from "./modal.js";
-import {settings} from "./utils";
 
 const initialCards = [
   {
     name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    link: 'https://vsegda-pomnim.com/uploads/posts/2022-04/1648761617_81-vsegda-pomnim-com-p-sofiiskie-ozera-arkhiz-foto-86.png'
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Мурманская область',
+    link: 'https://photocentra.ru/images/main89/892236_main.jpg'
   },
   {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Соловки',
+    link: 'https://photocentra.ru/images/main47/476758_main.jpg'
   },
   {
     name: 'Камчатка',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Москва Сити',
+    link: 'https://phonoteka.org/uploads/posts/2021-06/1624353296_15-phonoteka_org-p-moskva-siti-oboi-krasivo-15.jpg'
   },
   {
     name: 'Байкал',

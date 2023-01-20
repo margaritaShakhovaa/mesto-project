@@ -1,4 +1,12 @@
-import {buttonCloseList, elementPopup, imagePopupElement, popupList} from "./consts.js";
+import {buttonCloseList, elementPopup, formAddElement, imagePopupElement, popupList} from "./consts.js";
+
+// Закрытие попап по ESC
+function closeByEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
 
 // Функция открытия попап форм
 export function openPopup(popup) {
@@ -34,11 +42,3 @@ popupList.forEach(item => (
     }
   })
 ));
-
-// Закрытие попап по ESC
-function closeByEsc(evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  }
-}

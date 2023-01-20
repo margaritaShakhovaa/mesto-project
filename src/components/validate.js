@@ -39,7 +39,7 @@ const hasInvalidInput = (inputList) => {
 };
 
 // Функция, которая переключает состояние кнопки
-export const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.disabled = true;
     buttonElement.classList.add(settings.inactiveButtonClass);
@@ -50,7 +50,7 @@ export const toggleButtonState = (inputList, buttonElement) => {
 };
 
 // Функция, которая добавляет ошибки всем полям
-const setEventListeners = (formElement) => {
+export const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
