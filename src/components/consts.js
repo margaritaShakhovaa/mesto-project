@@ -14,6 +14,8 @@ export const profileName = formEditElement.querySelector('[name="profileName"]')
 export const profileDescription = formEditElement.querySelector('[name="profileDescription"]');
 export const nameInputElement = document.querySelector('.profile__title');
 export const descriptionInputElement = document.querySelector('.profile__subtitle');
+export const submitAddButton = formAddElement.querySelector('.popup__submit');
+export const submitEditButton = formEditElement.querySelector('.popup__submit');
 
 // Переменные для работы с карточками
 export const elementsContainer = document.querySelector('.elements');
@@ -24,3 +26,4 @@ export const linkInput = document.querySelector('[name="cardUrl"]');
 // Переменные для открытия/закрытия попап картинки
 export const elementPopup = document.querySelector('.element-popup');
 export const imagePopupElement = elementPopup.querySelector('.element-popup__image');
+

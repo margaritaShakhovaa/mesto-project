@@ -1,4 +1,4 @@
-import {buttonCloseList, elementPopup, formAddElement, imagePopupElement, popupList} from "./consts.js";
+import {buttonCloseList, elementPopup, imagePopupElement, popupList} from "./consts.js";
 
 // Закрытие попап по ESC
 function closeByEsc(evt) {

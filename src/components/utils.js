@@ -6,3 +6,12 @@ export const settings = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
 }
+
+// Функция переключения состояния кнопки
+export function setButtonState(button, isFormValid) {
+  if(isFormValid) {
+    button.classList.add(settings.inactiveButtonClass);
+  } else {
+    button.classList.remove(settings.inactiveButtonClass);
+  }
+}

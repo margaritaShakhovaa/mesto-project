@@ -12,15 +12,12 @@ import {
   popupAddCardElement,
   formAddElement,
   buttonEditElement,
-  buttonAddCardElement
+  buttonAddCardElement, submitEditButton, submitAddButton
 } from "./consts.js";
 import { closePopup, openPopup } from "./modal.js";
 import { addCard, renderCard } from "./cards.js";
-import {
-  enableValidation,
-  setEventListeners,
-} from "./validate.js";
-import {settings} from "./utils.js";
+import { enableValidation } from "./validate.js";
+import { setButtonState, settings } from "./utils.js";
 
 
 // ПОПАП РЕДАКТИРОВАНИЯ И СОХРАНЕНИЯ ИНФОРМАЦИИ О СЕБЕ
@@ -58,14 +55,15 @@ buttonEditElement.addEventListener('click', function () {
   profileName.value =  nameInputElement.textContent;
   profileDescription.value = descriptionInputElement.textContent;
   openPopup(popupEditElement);
+  setButtonState(submitEditButton, true);
 });
 
 // Открытие попап добавления карточки
 buttonAddCardElement.addEventListener('click', function () {
   openPopup(popupAddCardElement);
   formAddElement.reset();
-  setEventListeners(formAddElement);
+  setButtonState(submitAddButton, true);
 });
 
-// Включение валидации форм
+// // Включение валидации форм
 enableValidation(settings);
