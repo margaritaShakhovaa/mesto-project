@@ -17,7 +17,8 @@
 
     <!-- Секция profile -->
     <section class="profile">
-      <img src="<%=require('./images/profile__avatar.jpg')%>" alt="Аватар профиля" class="profile__avatar">
+      <img src="" alt="Аватар профиля" class="profile__avatar">
+      <button class="profile__avatar-button" type="button"></button>
       <div class="profile__title-container">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
         <button type="button" aria-label="Редактировать" class="profile__edit-button"></button>
@@ -46,6 +47,20 @@
         <input id="description-input" name="profileDescription" type="text" class="popup__input popup__input_type_description"
                value="" placeholder="О себе" minlength="2" maxlength="200" pattern="^[A-Za-zА-Яа-яЁё\s\-]+$" data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы." required>
         <span class="description-input-error popup__input-error"></span>
+        <button type="submit" class="popup__submit">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Секция popup для редактирования аватара -->
+  <section class="popup popup__avatar-edit">
+    <div class="popup__container">
+      <button type="button" aria-label="Закрыть" class="popup__form-close"></button>
+      <form name="avatarEdit" class="form popup__form-container popup__form-container_avatar" novalidate>
+        <h2 class="popup__heading">Обновить аватар</h2>
+          <input id="avatar-input" name="avatarUrl" type="url" class="popup__input popup__input_type_avatar"
+              placeholder="Ссылка на картинку" required>
+          <span class="avatar-input-error popup__input-error"></span>
         <button type="submit" class="popup__submit">Сохранить</button>
       </form>
     </div>
@@ -83,7 +98,10 @@
       <button type="button" aria-label="Удалить" class="element__delete"></button>
       <div class="element__content">
         <h2 class="element__title"></h2>
-        <button type="button" aria-label="Поставить лайк" class="element__like"></button>
+        <div class="element__like-container">
+          <button type="button" aria-label="Поставить лайк" class="element__like"></button>
+          <p class="element__like-counter"></p>
+        </div>
       </div>
     </article>
   </template>

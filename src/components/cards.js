@@ -1,67 +1,77 @@
 import { elementTemplate, elementsContainer } from "./consts.js";
 import { openElementPopup } from "./modal.js";
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://vsegda-pomnim.com/uploads/posts/2022-04/1648761617_81-vsegda-pomnim-com-p-sofiiskie-ozera-arkhiz-foto-86.png'
-  },
-  {
-    name: 'Мурманская область',
-    link: 'https://photocentra.ru/images/main89/892236_main.jpg'
-  },
-  {
-    name: 'Соловки',
-    link: 'https://photocentra.ru/images/main47/476758_main.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Москва Сити',
-    link: 'https://phonoteka.org/uploads/posts/2021-06/1624353296_15-phonoteka_org-p-moskva-siti-oboi-krasivo-15.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-// ДОБАВЛЕНИЕ ПЕРВОНАЧАЛЬНОГО МАССИВА КАРТОЧЕК ПРИ ЗАГРУЗКЕ
-initialCards.forEach(function(item) {
-  elementsContainer.append(addCard(item.name, item.link));
-});
+import { deleteCardApi, deleteLikeApi, putLikeApi } from "./api.js";
 
 // ДОБАВЛЕНИЕ КАРТОЧКИ
 export function renderCard(card) {
   elementsContainer.prepend(card);
 }
 
+// Добавления лайка
+const putLike = (button, counter, likes, idCard) => {
+  return putLikeApi(idCard).then((res) => {
+      if (!(button.classList.contains('element__like_active'))) {
+        counter.textContent = likes.length + 1;
+      }
+      button.classList.add('element__like_active');
+      counter.textContent = res.likes.length;
+    })
+    .catch((err) => {console.log(err)});
+};
+
+// Удаление лайка
+const deleteLike = (button, counter, likes, idCard) => {
+  return deleteLikeApi(idCard).then((res) => {
+    if (button.classList.contains('element__like_active')) {
+      counter.textContent = likes.length - 1;
+    }
+    button.classList.remove('element__like_active');
+    counter.textContent = res.likes.length;
+  })
+    .catch((err) => {console.log(err)});
+};
+
 // СОЗДАНИЕ НОВОЙ КАРТОЧКИ
-export function addCard(nameValue, linkValue) {
+export function addCard(nameValue, linkValue, likes, idOwner, idCard, userId) {
   const elementItem = elementTemplate.querySelector('.element').cloneNode(true);
   const imageElement = elementItem.querySelector('.element__image');
+  const titleElement = elementItem.querySelector('.element__title');
+  const deleteElement = elementItem.querySelector('.element__delete');
+  const likeElement = elementItem.querySelector('.element__like');
+  const likeCounterElement = elementItem.querySelector('.element__like-counter');
+  const likesArray = Array.from(likes);
+
   imageElement.src = linkValue;
   imageElement.alt = nameValue;
-  elementItem.querySelector('.element__title').textContent = nameValue;
+  titleElement.textContent = nameValue;
+  likeCounterElement.textContent = likes.length;
 
-  elementItem.querySelector('.element__delete').addEventListener(
-    'click',
-    function (evt) {
-      evt.target.closest('.element').remove();
-    });
+  likesArray.forEach((item) => {
+    if (item._id === userId) {
+      likeElement.classlist.add('element__like_active');
+    }
+  })
 
-  elementItem.querySelector('.element__like').addEventListener(
-    'click',
-    function(evt) {
-      evt.target.classList.toggle('element__like_active');
-    });
+  if (idOwner !== userId) {
+    deleteElement.remove();
+  }
 
-  imageElement.addEventListener(
-    'click',
-    function () {
+  likeElement.addEventListener('click', function () {
+    if (likeElement.classList.contains('element__like_active')) {
+      deleteLike(likeElement, likeCounterElement, likes, idCard);
+    } else {
+      putLike(likeElement, likeCounterElement, likes, idCard);
+    }
+  });
+
+  deleteElement.addEventListener('click', function () {
+    deleteCardApi(idCard).then(() => elementItem.remove())
+      .catch((err) => console.log(err))
+  })
+
+  imageElement.addEventListener('click', function () {
       openElementPopup(nameValue, linkValue);
-    });
+  });
+
   return elementItem;
 }

@@ -9,11 +9,11 @@ const showError = (formElement, inputElement, errorMessage) => {
 };
 
 // Функция, которая удаляет класс с ошибкой
-const hideError = (formElement, inputElement) => {
+export const hideError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(settings.inputErrorClass);
-  errorElement.classList.remove(settings.errorClass);
   errorElement.textContent = '';
+  errorElement.classList.remove(settings.errorClass);
 };
 
 // Функция, которая проверяет валидность поля
@@ -66,7 +66,5 @@ const setEventListeners = (formElement) => {
 
 export const enableValidation = (settings) => {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
-  formList.forEach((formElement) => {
-    setEventListeners(formElement);
-  });
+  formList.forEach((formElement) => {setEventListeners(formElement)});
 };

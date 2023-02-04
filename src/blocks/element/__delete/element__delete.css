@@ -1,4 +1,5 @@
 .element__delete {
+  display: inline-block;
   background-image: url(../../../images/delete.svg);
   background-repeat: no-repeat;
   position: absolute;
