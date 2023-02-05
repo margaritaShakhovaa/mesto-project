@@ -8,23 +8,17 @@ export function renderCard(card) {
 }
 
 // Добавления лайка
-const putLike = (button, counter, likes, idCard) => {
+const putLike = (button, counter, idCard) => {
   return putLikeApi(idCard).then((res) => {
-      if (!(button.classList.contains('element__like_active'))) {
-        counter.textContent = likes.length + 1;
-      }
-      button.classList.add('element__like_active');
-      counter.textContent = res.likes.length;
-    })
+    button.classList.add('element__like_active');
+    counter.textContent = res.likes.length;
+  })
     .catch((err) => {console.log(err)});
 };
 
 // Удаление лайка
-const deleteLike = (button, counter, likes, idCard) => {
+const deleteLike = (button, counter, idCard) => {
   return deleteLikeApi(idCard).then((res) => {
-    if (button.classList.contains('element__like_active')) {
-      counter.textContent = likes.length - 1;
-    }
     button.classList.remove('element__like_active');
     counter.textContent = res.likes.length;
   })
@@ -45,9 +39,10 @@ export function addCard(nameValue, linkValue, likes, idOwner, idCard, userId) {
   imageElement.alt = nameValue;
   titleElement.textContent = nameValue;
   likeCounterElement.textContent = likes.length;
+  elementItem.id = idCard;
 
   likesArray.forEach((item) => {
-    if (item._id === userId) {
+    if (idCard === userId) {
       likeElement.classlist.add('element__like_active');
     }
   })
@@ -58,9 +53,9 @@ export function addCard(nameValue, linkValue, likes, idOwner, idCard, userId) {
 
   likeElement.addEventListener('click', function () {
     if (likeElement.classList.contains('element__like_active')) {
-      deleteLike(likeElement, likeCounterElement, likes, idCard);
+      deleteLike(likeElement, likeCounterElement, idCard);
     } else {
-      putLike(likeElement, likeCounterElement, likes, idCard);
+      putLike(likeElement, likeCounterElement, idCard);
     }
   });
 

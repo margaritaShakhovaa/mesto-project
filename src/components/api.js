@@ -7,11 +7,10 @@ const config = {
 }
 
 export function getResponse(res) {
-  return res.json();
-}
-
-function getError(err) {
-  return Promise.reject(`Ошибка: ${err.status}`);
+  if(res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка: ${res.status}`);
 }
 
 // Загрузка карточек с сервера
@@ -20,7 +19,6 @@ export const getInitialCards = () => {
     headers: config.headers
   })
     .then(getResponse)
-    .catch(getError)
 }
 
 // Загрузка информации о пользователе с сервера
@@ -29,7 +27,6 @@ export const getUser = () => {
     headers: config.headers
   })
     .then(getResponse)
-    .catch(getError)
 }
 
 // Сохранение обновленных данных профиля
@@ -43,7 +40,6 @@ export const saveUser = (name, description) => {
     })
   })
     .then(getResponse)
-    .catch(getError)
 }
 
 // Добавление новой карточки
@@ -57,7 +53,6 @@ export const addNewCard = (name, link) => {
     })
   })
     .then(getResponse)
-    .catch(getError)
 }
 
 // Удаление карточки
@@ -67,7 +62,6 @@ export const deleteCardApi = (idCard) => {
     headers: config.headers
   })
     .then(getResponse)
-    .catch(getError)
 }
 
 // Постановка лайка
@@ -77,7 +71,6 @@ export const putLikeApi = (cardId) => {
     headers: config.headers
   })
     .then(getResponse)
-    .catch(getError)
 }
 
 // Удаление лайка
@@ -87,7 +80,6 @@ export const deleteLikeApi = (idCard) => {
     headers: config.headers
   })
     .then(getResponse)
-    .catch(getError)
 }
 
 // Обновление аватара пользователя
@@ -100,5 +92,4 @@ export function setUserAvatar(link) {
     })
   })
     .then(getResponse)
-    .catch(getError)
 }

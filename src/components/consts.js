@@ -34,4 +34,5 @@ export const linkInput = document.querySelector('[name="cardUrl"]');
 // Переменные для открытия/закрытия попап картинки
 export const elementPopup = document.querySelector('.element-popup');
 export const imagePopupElement = elementPopup.querySelector('.element-popup__image');
+export const headingPopupElement = elementPopup.querySelector('.element-popup__heading');
 

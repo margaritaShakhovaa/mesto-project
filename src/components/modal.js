@@ -1,4 +1,5 @@
-import {buttonCloseList, elementPopup, imagePopupElement, popupList} from "./consts.js";
+import {buttonCloseList, elementPopup, headingPopupElement, imagePopupElement, popupList} from "./consts.js";
+import {cleanErrors} from "./utils.js";
 
 // Закрытие попап по ESC
 function closeByEsc(evt) {
@@ -18,14 +19,13 @@ export function openPopup(popup) {
 export function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEsc);
-  popup.querySelectorAll('.popup__input').forEach(item => item.classList.remove('popup__input_type_error'))
-  popup.querySelectorAll('.popup__input-error').forEach(item => item.classList.remove('popup__input-error_active'))
+  cleanErrors(popup);
 }
 
 // Функция открытия попап с картинкой
 export function openElementPopup(name, link) {
   openPopup(elementPopup);
-  elementPopup.querySelector('.element-popup__heading').textContent = name;
+  headingPopupElement.textContent = name;
   imagePopupElement.src = link;
   imagePopupElement.alt = name;
 }

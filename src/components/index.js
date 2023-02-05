@@ -31,39 +31,41 @@ import {addNewCard, getInitialCards, getUser, saveUser, setUserAvatar} from "./a
 
 let userId;
 
-// Загрузка информации о пользователе с сервера
-getUser().then(data => {
-  nameInputElement.textContent = data.name;
-  descriptionInputElement.textContent = data.about;
-  userId = data._id;
-  avatarElement.src = data.avatar;
-})
+// Загрузка информации о пользователе с сервера и загрузка карточек с сервера
+Promise.all([getUser(), getInitialCards()])
+  .then(([userInfo, cards]) => {
+    userId = userInfo._id;
+    nameInputElement.textContent = userInfo.name;
+    descriptionInputElement.textContent = userInfo.about;
+    avatarElement.src = userInfo.avatar;
 
-// Загрузка карточек с сервера
-getInitialCards().then(data => {
-  data.forEach(item => elementsContainer.append(addCard(item.name, item.link, item.likes, item.owner._id, item._id, userId)))
+    cards.forEach(item => elementsContainer.append(addCard(item.name, item.link, item.likes, item.owner._id, item._id, userId)))
 })
+  .catch(err => console.log(err))
 
 // ПОПАП РЕДАКТИРОВАНИЯ И СОХРАНЕНИЯ ИНФОРМАЦИИ О СЕБЕ
 function handleSubmitEditProfile (evt) {
   evt.preventDefault();
   renderSaveLoading(popupEditElement, true);
-  nameInputElement.textContent = profileName.value;
-  descriptionInputElement.textContent = profileDescription.value;
-  saveUser(profileName.value, profileDescription.value).then(res => console.log(res))
+  saveUser(profileName.value, profileDescription.value)
+    .then(() => {
+      nameInputElement.textContent = profileName.value
+      descriptionInputElement.textContent = profileDescription.value
+      closePopup(popupEditElement)
+    })
     .catch(err => console.log(err))
     .finally(() => renderSaveLoading(popupEditElement, false))
-  closePopup(popupEditElement);
 }
 
 // ПОПАП РЕДАКТИРОВАНИЯ И СОХРАНЕНИЯ АВАТАРА
 function handleSubmitAvatar (evt) {
   evt.preventDefault();
   renderSaveLoading(popupAvatarElement, true);
-  setUserAvatar(avatarInput.value).then(res => avatarElement.src = res.avatar)
+  setUserAvatar(avatarInput.value)
+    .then(res => avatarElement.src = res.avatar)
+    .then(() => closePopup(popupAvatarElement))
     .catch(err => console.log(err))
     .finally(() => renderSaveLoading(popupAvatarElement, false))
-  closePopup(popupAvatarElement);
 }
 
 // ПОПАП ДОБАВЛЕНИЯ НОВОЙ КАРТОЧКИ
@@ -71,9 +73,9 @@ export function handleSubmitAddCard (evt) {
   evt.preventDefault();
   renderCreateLoading(popupAddCardElement, true);
   addNewCard(nameCardInput.value,linkInput.value).then(card => renderCard(addCard(card.name, card.link, card.likes, card.owner._id, card._id, userId)))
+    .then(() => closePopup(popupAddCardElement))
     .catch(err => console.log(err))
     .finally(() => renderCreateLoading(popupAddCardElement, false))
-  closePopup(popupAddCardElement);
 }
 
 // СЛУШАТЕЛИ

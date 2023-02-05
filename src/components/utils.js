@@ -11,31 +11,37 @@ export const settings = {
 export function setButtonState(button, isFormValid) {
   if(isFormValid) {
     button.classList.add(settings.inactiveButtonClass);
+    button.disabled = true;
   } else {
-    button.classList.remove(settings.inactiveButtonClass);
+    button.disabled = false;
   }
 }
 
 // Функция переключения кнопки "Сохранить"
-export function renderSaveLoading(popup, isLoading) {
+export function renderSaveLoading(popup, isLoading, buttonText='Сохранить', loadingText='Сохранение...') {
   const submitButton = popup.querySelector('.popup__submit');
   if(isLoading) {
-    submitButton.textContent = 'Сохранение...'
+    submitButton.textContent = loadingText;
     submitButton.disabled = true;
   } else {
-    submitButton.textContent = 'Сохранить'
+    submitButton.textContent = buttonText;
     submitButton.disabled = false;
   }
 }
 
 // Функция переключения кнопки "Создать"
-export function renderCreateLoading(popup, isLoading) {
+export function renderCreateLoading(popup, isLoading, buttonText='Создать', loadingText='Сохранение...') {
   const submitButton = popup.querySelector('.popup__submit');
   if(isLoading) {
-    submitButton.textContent = 'Сохранение...'
+    submitButton.textContent = loadingText;
     submitButton.disabled = true;
   } else {
-    submitButton.textContent = 'Создать'
+    submitButton.textContent = buttonText;
     submitButton.disabled = false;
   }
+}
+
+export function cleanErrors(popup) {
+  popup.querySelectorAll('.popup__input').forEach(item => item.classList.remove('popup__input_type_error'))
+  popup.querySelectorAll('.popup__input-error').forEach(item => item.classList.remove('popup__input-error_active'))
 }
