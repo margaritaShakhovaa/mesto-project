@@ -26,7 +26,7 @@ import {
 import { closePopup, openPopup } from "./modal.js";
 import { addCard, renderCard } from "./cards.js";
 import { enableValidation } from "./validate.js";
-import {renderCreateLoading, renderSaveLoading, setButtonState, settings} from "./utils.js";
+import {cleanErrors, renderCreateLoading, renderSaveLoading, setButtonState, settings} from "./utils.js";
 import {addNewCard, getInitialCards, getUser, saveUser, setUserAvatar} from "./api.js";
 
 let userId;
@@ -81,6 +81,7 @@ export function handleSubmitAddCard (evt) {
 // СЛУШАТЕЛИ
 // Открытие попап профиля
 buttonEditElement.addEventListener('click', function () {
+  cleanErrors(popupEditElement);
   profileName.value =  nameInputElement.textContent;
   profileDescription.value = descriptionInputElement.textContent;
   openPopup(popupEditElement);
@@ -89,6 +90,7 @@ buttonEditElement.addEventListener('click', function () {
 
 // Открытие попап редактирования аватара
 buttonAvatarElement.addEventListener('click', function () {
+  cleanErrors(popupAvatarElement);
   openPopup(popupAvatarElement);
   formAvatar.reset();
   setButtonState(submitAvatarButton, true);
@@ -96,6 +98,7 @@ buttonAvatarElement.addEventListener('click', function () {
 
 // Открытие попап добавления карточки
 buttonAddCardElement.addEventListener('click', function () {
+  cleanErrors(popupAddCardElement);
   openPopup(popupAddCardElement);
   formAddElement.reset();
   setButtonState(submitAddButton, true);
