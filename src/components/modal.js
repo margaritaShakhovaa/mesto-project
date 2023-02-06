@@ -1,5 +1,4 @@
 import {buttonCloseList, elementPopup, headingPopupElement, imagePopupElement, popupList} from "./consts.js";
-import {cleanErrors} from "./utils.js";
 
 // Закрытие попап по ESC
 function closeByEsc(evt) {
