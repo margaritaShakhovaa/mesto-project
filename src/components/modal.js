@@ -19,7 +19,6 @@ export function openPopup(popup) {
 export function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEsc);
-  cleanErrors(popup);
 }
 
 // Функция открытия попап с картинкой
